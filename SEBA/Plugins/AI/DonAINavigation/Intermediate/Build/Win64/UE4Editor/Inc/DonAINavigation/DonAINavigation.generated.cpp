@@ -306,7 +306,7 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFDonNavigationV
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "VisualizeDynamicCollisionListeners",(Native)&ADonNavigationManager::execVisualizeDynamicCollisionListeners);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "VisualizeNAVResult",(Native)&ADonNavigationManager::execVisualizeNAVResult);
 	}
-	IMPLEMENT_CLASS(ADonNavigationManager, 1403337752);
+	IMPLEMENT_CLASS(ADonNavigationManager, 3110582354);
 	void UDonNavigationHelper::StaticRegisterNativesUDonNavigationHelper()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(UDonNavigationHelper::StaticClass(), "DonNavigationManager",(Native)&UDonNavigationHelper::execDonNavigationManager);
@@ -506,7 +506,7 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFNavigationGrap
 		FNativeFunctionRegistrar::RegisterFunction(ADEPRECATED_VolumeAdaptiveBuilder::StaticClass(), "VisualizeNAVResultRealTime",(Native)&ADEPRECATED_VolumeAdaptiveBuilder::execVisualizeNAVResultRealTime);
 		FNativeFunctionRegistrar::RegisterFunction(ADEPRECATED_VolumeAdaptiveBuilder::StaticClass(), "VisualizeSolution",(Native)&ADEPRECATED_VolumeAdaptiveBuilder::execVisualizeSolution);
 	}
-	IMPLEMENT_CLASS(ADEPRECATED_VolumeAdaptiveBuilder, 1124876505);
+	IMPLEMENT_CLASS(ADEPRECATED_VolumeAdaptiveBuilder, 2848900243);
 FName DONAINAVIGATION_AddMovementInputCustom = FName(TEXT("AddMovementInputCustom"));
 FName DONAINAVIGATION_OnLocomotionAbort = FName(TEXT("OnLocomotionAbort"));
 FName DONAINAVIGATION_OnLocomotionBegin = FName(TEXT("OnLocomotionBegin"));
