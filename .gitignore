@@ -60,3 +60,15 @@ SEBA/Intermediate/*
 
 # Cache files for the editor to use
 SEBA/DerivedDataCache/*
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Development/DonAINavigation/Module.DonAINavigation.cpp
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Development/UE4-DonAINavigation.lib.response
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/BTTask_FlyTo.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DEPRECATED_DonNavigationVolumeComponent.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DEPRECATED_VolumeAdaptiveBuilder.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonAINavigation.generated.cpp
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonAINavigation.generated.dep.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonAINavigationClasses.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonNavigationHelper.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonNavigationManager.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/DonNavigatorInterface.generated.h
+SEBA/Plugins/AI/DonAINavigation/Intermediate/Build/Win64/UE4/Inc/DonAINavigation/Timestamp
