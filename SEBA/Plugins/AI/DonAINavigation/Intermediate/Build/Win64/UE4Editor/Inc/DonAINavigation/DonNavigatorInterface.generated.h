@@ -25,25 +25,33 @@ struct FVector;
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_NextPoint); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnNextSegment_Implementation(Z_Param_NextPoint); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionAbort) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionAbort_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionEnd) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionEnd_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionBegin) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionBegin_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execAddMovementInputCustom) \
@@ -51,7 +59,9 @@ struct FVector;
 		P_GET_STRUCT(FVector,Z_Param_WorldDirection); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_ScaleValue); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->AddMovementInputCustom_Implementation(Z_Param_WorldDirection,Z_Param_ScaleValue); \
+		P_NATIVE_END; \
 	}
 
 
@@ -66,25 +76,33 @@ struct FVector;
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_NextPoint); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnNextSegment_Implementation(Z_Param_NextPoint); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionAbort) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionAbort_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionEnd) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionEnd_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execOnLocomotionBegin) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->OnLocomotionBegin_Implementation(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execAddMovementInputCustom) \
@@ -92,7 +110,9 @@ struct FVector;
 		P_GET_STRUCT(FVector,Z_Param_WorldDirection); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_ScaleValue); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->AddMovementInputCustom_Implementation(Z_Param_WorldDirection,Z_Param_ScaleValue); \
+		P_NATIVE_END; \
 	}
 
 
@@ -121,8 +141,9 @@ extern DONAINAVIGATION_API  FName DONAINAVIGATION_OnNextSegment;
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDonNavigator); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDonNavigator); \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UDonNavigator(const UDonNavigator& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UDonNavigator(UDonNavigator&&); \
+	NO_API UDonNavigator(const UDonNavigator&); \
 public:
 
 
@@ -130,8 +151,9 @@ public:
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UDonNavigator(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UDonNavigator(const UDonNavigator& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UDonNavigator(UDonNavigator&&); \
+	NO_API UDonNavigator(const UDonNavigator&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDonNavigator); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDonNavigator); \

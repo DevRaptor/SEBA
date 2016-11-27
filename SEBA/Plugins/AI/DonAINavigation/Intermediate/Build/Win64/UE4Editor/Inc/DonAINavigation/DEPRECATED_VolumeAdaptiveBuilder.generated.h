@@ -36,14 +36,18 @@ class AActor;
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_Component); \
 		P_GET_STRUCT(FVector,Z_Param_ComponentAt); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->GetNAVVolumeFromComponent(Z_Param_Component,Z_Param_ComponentAt); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetNAVVolumeFromObject) \
 	{ \
 		P_GET_OBJECT(UObject,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->GetNAVVolumeFromObject(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeSolution) \
@@ -58,7 +62,9 @@ class AActor;
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeSolution(Z_Param_source,Z_Param_destination,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_VisualizeRawPath,Z_Param_VisualizeOptimizedPath,Z_Param_VisualizeInRealTime,Z_Param_DrawDebugVolumes,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResultRealTime) \
@@ -71,7 +77,9 @@ class AActor;
 		P_GET_STRUCT(FColor,Z_Param_LineColor); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResultRealTime(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_DrawDebugVolumes,Z_Param_LineColor,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResult) \
@@ -84,7 +92,9 @@ class AActor;
 		P_GET_STRUCT(FColor,Z_Param_LineColor); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResult(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_DrawDebugVolumes,Z_Param_LineColor,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavEntryPointFromPath) \
@@ -97,7 +107,9 @@ class AActor;
 		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_newVolumeIndex); \
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavEntryPointFromPath(Z_Param_Origin,Z_Param_FinalDestination,Z_Param_currentVolumeIndex,Z_Param_path,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_newVolumeIndex,Z_Param_DrawDebugVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavigaitonEntryPoint) \
@@ -110,7 +122,9 @@ class AActor;
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsY); \
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsZ); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavigaitonEntryPoint(Z_Param_Actor,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_overlapsX,Z_Param_Out_overlapsY,Z_Param_Out_overlapsZ); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavigaitonEntryPointFromVector) \
@@ -124,7 +138,9 @@ class AActor;
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsZ); \
 		P_GET_UBOOL(Z_Param_DrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavigaitonEntryPointFromVector(Z_Param_Origin,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_overlapsX,Z_Param_Out_overlapsY,Z_Param_Out_overlapsZ,Z_Param_DrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavEntryPointsForTraversal) \
@@ -135,7 +151,9 @@ class AActor;
 		P_GET_PROPERTY_REF(UFloatProperty,Z_Param_Out_SegmentDist); \
 		P_GET_UBOOL(Z_Param_DrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavEntryPointsForTraversal(Z_Param_Origin,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_SegmentDist,Z_Param_DrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetShortestPathToDestination_DebugRealtime) \
@@ -150,7 +168,9 @@ class AActor;
 		P_GET_TARRAY_REF(FVector,Z_Param_Out_PathSolutionOptimized); \
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->GetShortestPathToDestination_DebugRealtime(Z_Param_Reset,Z_Param_origin,Z_Param_destination,Z_Param_originVolume,Z_Param_destinationVolume,Z_Param_DrawDebug,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_DrawDebugVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetShortestPathToDestination) \
@@ -167,19 +187,25 @@ class AActor;
 		P_GET_UBOOL(Z_Param_VisualizeInRealTime); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(TArray<UDoNNavigationVolumeComponent*>*)Z_Param__Result=this->GetShortestPathToDestination(Z_Param_origin,Z_Param_destination,Z_Param_originVolume,Z_Param_destinationVolume,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_DrawDebugVolumes,Z_Param_VisualizeRawPath,Z_Param_VisualizeOptimizedPath,Z_Param_VisualizeInRealTime,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execBuildNAVNetwork) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->BuildNAVNetwork(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execCleanUp) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->CleanUp(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execCreateNAVVolume) \
@@ -190,7 +216,9 @@ class AActor;
 		P_GET_PROPERTY(UIntProperty,Z_Param_SeedY); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_SeedZ); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->CreateNAVVolume(Z_Param_Location,Z_Param_VolumeName,Z_Param_SeedX,Z_Param_SeedY,Z_Param_SeedZ); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGrowNAVVolumeByIndex) \
@@ -200,19 +228,25 @@ class AActor;
 		P_GET_PROPERTY(UIntProperty,Z_Param_YGrowth); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_ZGrowth); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->GrowNAVVolumeByIndex(Z_Param_volume,Z_Param_XGrowth,Z_Param_YGrowth,Z_Param_ZGrowth); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGenerateAdaptiveNavigationVolumeSeeds) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->GenerateAdaptiveNavigationVolumeSeeds(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execConstructBuilder) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->ConstructBuilder(); \
+		P_NATIVE_END; \
 	}
 
 
@@ -223,14 +257,18 @@ class AActor;
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_Component); \
 		P_GET_STRUCT(FVector,Z_Param_ComponentAt); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->GetNAVVolumeFromComponent(Z_Param_Component,Z_Param_ComponentAt); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetNAVVolumeFromObject) \
 	{ \
 		P_GET_OBJECT(UObject,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->GetNAVVolumeFromObject(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeSolution) \
@@ -245,7 +283,9 @@ class AActor;
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeSolution(Z_Param_source,Z_Param_destination,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_VisualizeRawPath,Z_Param_VisualizeOptimizedPath,Z_Param_VisualizeInRealTime,Z_Param_DrawDebugVolumes,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResultRealTime) \
@@ -258,7 +298,9 @@ class AActor;
 		P_GET_STRUCT(FColor,Z_Param_LineColor); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResultRealTime(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_DrawDebugVolumes,Z_Param_LineColor,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResult) \
@@ -271,7 +313,9 @@ class AActor;
 		P_GET_STRUCT(FColor,Z_Param_LineColor); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResult(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_DrawDebugVolumes,Z_Param_LineColor,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavEntryPointFromPath) \
@@ -284,7 +328,9 @@ class AActor;
 		P_GET_PROPERTY_REF(UIntProperty,Z_Param_Out_newVolumeIndex); \
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavEntryPointFromPath(Z_Param_Origin,Z_Param_FinalDestination,Z_Param_currentVolumeIndex,Z_Param_path,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_newVolumeIndex,Z_Param_DrawDebugVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavigaitonEntryPoint) \
@@ -297,7 +343,9 @@ class AActor;
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsY); \
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsZ); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavigaitonEntryPoint(Z_Param_Actor,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_overlapsX,Z_Param_Out_overlapsY,Z_Param_Out_overlapsZ); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavigaitonEntryPointFromVector) \
@@ -311,7 +359,9 @@ class AActor;
 		P_GET_UBOOL_REF(Z_Param_Out_overlapsZ); \
 		P_GET_UBOOL(Z_Param_DrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavigaitonEntryPointFromVector(Z_Param_Origin,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_VolumeTraversalImminent,Z_Param_Out_overlapsX,Z_Param_Out_overlapsY,Z_Param_Out_overlapsZ,Z_Param_DrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execNavEntryPointsForTraversal) \
@@ -322,7 +372,9 @@ class AActor;
 		P_GET_PROPERTY_REF(UFloatProperty,Z_Param_Out_SegmentDist); \
 		P_GET_UBOOL(Z_Param_DrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->NavEntryPointsForTraversal(Z_Param_Origin,Z_Param_CurrentVolume,Z_Param_DestinationVolume,Z_Param_Out_SegmentDist,Z_Param_DrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetShortestPathToDestination_DebugRealtime) \
@@ -337,7 +389,9 @@ class AActor;
 		P_GET_TARRAY_REF(FVector,Z_Param_Out_PathSolutionOptimized); \
 		P_GET_UBOOL(Z_Param_DrawDebugVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->GetShortestPathToDestination_DebugRealtime(Z_Param_Reset,Z_Param_origin,Z_Param_destination,Z_Param_originVolume,Z_Param_destinationVolume,Z_Param_DrawDebug,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_DrawDebugVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGetShortestPathToDestination) \
@@ -354,19 +408,25 @@ class AActor;
 		P_GET_UBOOL(Z_Param_VisualizeInRealTime); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(TArray<UDoNNavigationVolumeComponent*>*)Z_Param__Result=this->GetShortestPathToDestination(Z_Param_origin,Z_Param_destination,Z_Param_originVolume,Z_Param_destinationVolume,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_DrawDebugVolumes,Z_Param_VisualizeRawPath,Z_Param_VisualizeOptimizedPath,Z_Param_VisualizeInRealTime,Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execBuildNAVNetwork) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->BuildNAVNetwork(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execCleanUp) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->CleanUp(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execCreateNAVVolume) \
@@ -377,7 +437,9 @@ class AActor;
 		P_GET_PROPERTY(UIntProperty,Z_Param_SeedY); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_SeedZ); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(UDoNNavigationVolumeComponent**)Z_Param__Result=this->CreateNAVVolume(Z_Param_Location,Z_Param_VolumeName,Z_Param_SeedX,Z_Param_SeedY,Z_Param_SeedZ); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGrowNAVVolumeByIndex) \
@@ -387,19 +449,25 @@ class AActor;
 		P_GET_PROPERTY(UIntProperty,Z_Param_YGrowth); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_ZGrowth); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->GrowNAVVolumeByIndex(Z_Param_volume,Z_Param_XGrowth,Z_Param_YGrowth,Z_Param_ZGrowth); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execGenerateAdaptiveNavigationVolumeSeeds) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->GenerateAdaptiveNavigationVolumeSeeds(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execConstructBuilder) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->ConstructBuilder(); \
+		P_NATIVE_END; \
 	}
 
 
@@ -432,15 +500,17 @@ class AActor;
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ADEPRECATED_VolumeAdaptiveBuilder); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ADEPRECATED_VolumeAdaptiveBuilder); \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API ADEPRECATED_VolumeAdaptiveBuilder(const ADEPRECATED_VolumeAdaptiveBuilder& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API ADEPRECATED_VolumeAdaptiveBuilder(ADEPRECATED_VolumeAdaptiveBuilder&&); \
+	NO_API ADEPRECATED_VolumeAdaptiveBuilder(const ADEPRECATED_VolumeAdaptiveBuilder&); \
 public:
 
 
 #define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_Legacy_DEPRECATED_VolumeAdaptiveBuilder_h_65_ENHANCED_CONSTRUCTORS \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API ADEPRECATED_VolumeAdaptiveBuilder(const ADEPRECATED_VolumeAdaptiveBuilder& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API ADEPRECATED_VolumeAdaptiveBuilder(ADEPRECATED_VolumeAdaptiveBuilder&&); \
+	NO_API ADEPRECATED_VolumeAdaptiveBuilder(const ADEPRECATED_VolumeAdaptiveBuilder&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ADEPRECATED_VolumeAdaptiveBuilder); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ADEPRECATED_VolumeAdaptiveBuilder); \

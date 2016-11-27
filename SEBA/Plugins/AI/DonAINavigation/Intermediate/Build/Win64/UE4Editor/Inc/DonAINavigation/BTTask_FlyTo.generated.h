@@ -26,14 +26,18 @@ struct FDoNNavigationQueryData;
 	{ \
 		P_GET_STRUCT_REF(FDonNavigationDynamicCollisionPayload,Z_Param_Out_Data); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Pathfinding_OnDynamicCollisionAlert(Z_Param_Out_Data); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execPathfinding_OnFinish) \
 	{ \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_Data); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Pathfinding_OnFinish(Z_Param_Out_Data); \
+		P_NATIVE_END; \
 	}
 
 
@@ -43,14 +47,18 @@ struct FDoNNavigationQueryData;
 	{ \
 		P_GET_STRUCT_REF(FDonNavigationDynamicCollisionPayload,Z_Param_Out_Data); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Pathfinding_OnDynamicCollisionAlert(Z_Param_Out_Data); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execPathfinding_OnFinish) \
 	{ \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_Data); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Pathfinding_OnFinish(Z_Param_Out_Data); \
+		P_NATIVE_END; \
 	}
 
 
@@ -83,15 +91,17 @@ struct FDoNNavigationQueryData;
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UBTTask_FlyTo); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UBTTask_FlyTo); \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UBTTask_FlyTo(const UBTTask_FlyTo& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UBTTask_FlyTo(UBTTask_FlyTo&&); \
+	NO_API UBTTask_FlyTo(const UBTTask_FlyTo&); \
 public:
 
 
 #define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_BehaviorTree_BTTask_FlyTo_h_78_ENHANCED_CONSTRUCTORS \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UBTTask_FlyTo(const UBTTask_FlyTo& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UBTTask_FlyTo(UBTTask_FlyTo&&); \
+	NO_API UBTTask_FlyTo(const UBTTask_FlyTo&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UBTTask_FlyTo); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UBTTask_FlyTo); \

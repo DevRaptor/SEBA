@@ -42,7 +42,12 @@ UBTTask_FlyTo::UBTTask_FlyTo(const FObjectInitializer& ObjectInitializer) : Supe
 void UBTTask_FlyTo::InitializeFromAsset(UBehaviorTree& Asset)
 {
 	Super::InitializeFromAsset(Asset);
-	FlightLocationKey.CacheSelectedKey(GetBlackboardAsset());
+
+	auto blackboard = GetBlackboardAsset();
+	if (!blackboard)
+		return;
+	
+	FlightLocationKey.ResolveSelectedKey(*blackboard);
 }
 
 EBTNodeResult::Type UBTTask_FlyTo::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
@@ -139,7 +144,7 @@ FBT_FlyToTarget* UBTTask_FlyTo::TaskMemoryFromGenericPayload(void* GenericPayloa
 	// inside which we store the pathfinding results.
 
 	auto payload = static_cast<FBT_FlyToTarget_Metadata*> (GenericPayload);
-	auto ownerComp = payload ? payload->OwnerComp.Get() : NULL;
+	auto ownerComp = (payload && payload->OwnerComp.IsValid()) ? payload->OwnerComp.Get() : NULL;
 
 	// Is the pawn's BrainComponent still alive and valid?
 	if (!ownerComp)
@@ -294,9 +299,13 @@ void UBTTask_FlyTo::TickPathNavigation(UBehaviorTreeComponent& OwnerComp, FBT_Fl
 		// Goal reached?
 		if (MyMemory->solutionTraversalIndex == queryResults.PathSolutionOptimized.Num() - 1)
 		{
-			UBlackboardComponent* blackboard = pawn->GetController()->FindComponentByClass<UBlackboardComponent>();
-			blackboard->SetValueAsBool(FlightResultKey.SelectedKeyName, true);
-			blackboard->SetValueAsBool(KeyToFlipFlopWhenTaskExits.SelectedKeyName, !blackboard->GetValueAsBool(KeyToFlipFlopWhenTaskExits.SelectedKeyName));
+			auto controller = pawn->GetController();
+			auto blackboard = controller ? controller->FindComponentByClass<UBlackboardComponent>() : NULL;
+			if (blackboard)
+			{
+				blackboard->SetValueAsBool(FlightResultKey.SelectedKeyName, true);
+				blackboard->SetValueAsBool(KeyToFlipFlopWhenTaskExits.SelectedKeyName, !blackboard->GetValueAsBool(KeyToFlipFlopWhenTaskExits.SelectedKeyName));
+			}
 
 			// Unregister all dynamic collision listeners. We've completed our task and are no longer interested in listening to these:
 			NavigationManager->StopListeningToDynamicCollisionsForPath(MyMemory->DynamicCollisionListener, queryResults);
@@ -320,16 +329,22 @@ void UBTTask_FlyTo::TickPathNavigation(UBehaviorTreeComponent& OwnerComp, FBT_Fl
 			{
 				if (!MyMemory->Metadata.OwnerComp.IsValid()) // edge case identified during high-speed time dilation. Need to gain a better understanding of exactly what triggers this issue.
 				{
-					auto blackboard = pawn->GetController()->FindComponentByClass<UBlackboardComponent>();
-					HandleTaskFailure(blackboard);
+					if (pawn->GetController())
+					{
+						auto blackboard = pawn->GetController()->FindComponentByClass<UBlackboardComponent>();
+						HandleTaskFailure(blackboard);
+					}				
 
 					FinishLatentTask(OwnerComp, EBTNodeResult::Failed);
 				}
 
-				FVector nextPoint = queryResults.PathSolutionOptimized[MyMemory->solutionTraversalIndex];
-				//UE_LOG(DoNNavigationLog, Verbose, TEXT("Segment %d, %s"), MyMemory->solutionTraversalIndex, *nextPoint.ToString());
+				if (queryResults.PathSolutionOptimized.IsValidIndex(MyMemory->solutionTraversalIndex))
+				{
+					FVector nextPoint = queryResults.PathSolutionOptimized[MyMemory->solutionTraversalIndex];
+					//UE_LOG(DoNNavigationLog, Verbose, TEXT("Segment %d, %s"), MyMemory->solutionTraversalIndex, *nextPoint.ToString());
 
-				IDonNavigator::Execute_OnNextSegment(pawn, nextPoint);
+					IDonNavigator::Execute_OnNextSegment(pawn, nextPoint);
+				}				
 			}
 			
 		}

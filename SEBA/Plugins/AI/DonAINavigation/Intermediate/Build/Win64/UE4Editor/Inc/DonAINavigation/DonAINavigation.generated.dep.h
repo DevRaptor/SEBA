@@ -14,8 +14,11 @@
 #ifndef DONAINAVIGATION_BTTask_FlyTo_generated_h
 	#include "Classes/BehaviorTree/BTTask_FlyTo.h"
 #endif
-#ifndef DONAINAVIGATION_DEPRECATED_DonNavigationVolumeComponent_generated_h
-	#include "Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"
+#ifndef DONAINAVIGATION_DonNavigationManagerUnbound_generated_h
+	#include "Classes/DonNavigationManagerUnbound.h"
+#endif
+#ifndef DONAINAVIGATION_DEPRECATED_DoNNavigationVolumeComponent_generated_h
+	#include "Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"
 #endif
 #ifndef DONAINAVIGATION_DonNavigatorInterface_generated_h
 	#include "Classes/DonNavigatorInterface.h"

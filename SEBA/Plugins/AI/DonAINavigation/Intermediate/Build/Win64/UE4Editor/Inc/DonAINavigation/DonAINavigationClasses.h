@@ -10,7 +10,8 @@
 #include "Classes/DonNavigationManager.h"
 #include "Classes/DonNavigationHelper.h"
 #include "Classes/BehaviorTree/BTTask_FlyTo.h"
-#include "Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"
+#include "Classes/DonNavigationManagerUnbound.h"
+#include "Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"
 #include "Classes/DonNavigatorInterface.h"
 #include "Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"
 

@@ -22,22 +22,22 @@ struct FDoNNavigationQueryParams;
 #endif
 #define DONAINAVIGATION_DonNavigationManager_generated_h
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_495_GENERATED_BODY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_535_GENERATED_BODY \
 	friend DONAINAVIGATION_API class UScriptStruct* Z_Construct_UScriptStruct_FDonNavigationDynamicCollisionTask(); \
 	DONAINAVIGATION_API static class UScriptStruct* StaticStruct();
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_410_GENERATED_BODY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_441_GENERATED_BODY \
 	friend DONAINAVIGATION_API class UScriptStruct* Z_Construct_UScriptStruct_FDonNavigationQueryTask(); \
 	DONAINAVIGATION_API static class UScriptStruct* StaticStruct();
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_402_GENERATED_BODY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_433_GENERATED_BODY \
 	friend DONAINAVIGATION_API class UScriptStruct* Z_Construct_UScriptStruct_FDonNavigationTask(); \
 	DONAINAVIGATION_API static class UScriptStruct* StaticStruct();
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_306_GENERATED_BODY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_326_GENERATED_BODY \
 	friend DONAINAVIGATION_API class UScriptStruct* Z_Construct_UScriptStruct_FDoNNavigationQueryData(); \
 	DONAINAVIGATION_API static class UScriptStruct* StaticStruct();
 
@@ -87,7 +87,7 @@ struct FDoNNavigationQueryParams;
 	DONAINAVIGATION_API static class UScriptStruct* StaticStruct();
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_443_DELEGATE \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_483_DELEGATE \
 struct _Script_DonAINavigation_eventDonCollisionSamplerCallback_Parms \
 { \
 	bool bTaskSuccessful; \
@@ -100,12 +100,12 @@ static inline void FDonCollisionSamplerCallback_DelegateWrapper(const FScriptDel
 }
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_397_DELEGATE \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_428_DELEGATE \
 struct _Script_DonAINavigation_eventDoNNavigationResultHandler_Parms \
 { \
 	FDoNNavigationQueryData Data; \
 }; \
-static inline void FDoNNavigationResultHandler_DelegateWrapper(const FScriptDelegate& DoNNavigationResultHandler, const FDoNNavigationQueryData& Data) \
+static inline void FDoNNavigationResultHandler_DelegateWrapper(const FScriptDelegate& DoNNavigationResultHandler, FDoNNavigationQueryData const& Data) \
 { \
 	_Script_DonAINavigation_eventDoNNavigationResultHandler_Parms Parms; \
 	Parms.Data=Data; \
@@ -118,7 +118,7 @@ struct _Script_DonAINavigation_eventDonNavigationDynamicCollisionDelegate_Parms 
 { \
 	FDonNavigationDynamicCollisionPayload Data; \
 }; \
-static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const FScriptDelegate& DonNavigationDynamicCollisionDelegate, const FDonNavigationDynamicCollisionPayload& Data) \
+static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const FScriptDelegate& DonNavigationDynamicCollisionDelegate, FDonNavigationDynamicCollisionPayload const& Data) \
 { \
 	_Script_DonAINavigation_eventDonNavigationDynamicCollisionDelegate_Parms Parms; \
 	Parms.Data=Data; \
@@ -128,14 +128,16 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_RPC_WRAPPERS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execVisualizeDynamicCollisionListeners) \
 	{ \
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_Listener); \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_QueryData); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeDynamicCollisionListeners(FDonNavigationDynamicCollisionDelegate(Z_Param_Listener),Z_Param_Out_QueryData); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResult) \
@@ -147,7 +149,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT_REF(FDoNNavigationDebugParams,Z_Param_Out_DebugParams); \
 		P_GET_STRUCT_REF(FColor,Z_Param_Out_LineColor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResult(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_Out_DebugParams,Z_Param_Out_LineColor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsMeshBoundsWithinNavigableWorld) \
@@ -155,7 +159,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_Mesh); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_BoundsScaleFactor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsMeshBoundsWithinNavigableWorld(Z_Param_Mesh,Z_Param_BoundsScaleFactor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsLocationBeneathLandscape) \
@@ -163,7 +169,24 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT(FVector,Z_Param_Location); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineTraceHeight); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsLocationBeneathLandscape(Z_Param_Location,Z_Param_LineTraceHeight); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFindRandomPointAroundOriginInNavWorld) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_NavigationActor); \
+		P_GET_STRUCT(FVector,Z_Param_Origin); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_Distance); \
+		P_GET_UBOOL_REF(Z_Param_Out_bFoundValidResult); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxDesiredAltitude); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxZAngularDispacement); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_MaxAttempts); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FVector*)Z_Param__Result=this->FindRandomPointAroundOriginInNavWorld(Z_Param_NavigationActor,Z_Param_Origin,Z_Param_Distance,Z_Param_Out_bFoundValidResult,Z_Param_MaxDesiredAltitude,Z_Param_MaxZAngularDispacement,Z_Param_MaxAttempts); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execFindRandomPointFromActorInNavWorld) \
@@ -175,7 +198,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxZAngularDispacement); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_MaxAttempts); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->FindRandomPointFromActorInNavWorld(Z_Param_Actor,Z_Param_Distance,Z_Param_Out_bFoundValidResult,Z_Param_MaxDesiredAltitude,Z_Param_MaxZAngularDispacement,Z_Param_MaxAttempts); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathLineSweep) \
@@ -187,7 +212,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_CollisionShapeInflation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathLineSweep(Z_Param_CollisionComponent,Z_Param_Start,Z_Param_End,Z_Param_Out_OutHit,Z_Param_bFindInitialOverlaps,Z_Param_CollisionShapeInflation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathLineTrace) \
@@ -198,7 +225,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_TARRAY_REF(AActor*,Z_Param_Out_ActorsToIgnore); \
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathLineTrace(Z_Param_start,Z_Param_end,Z_Param_Out_OutHit,Z_Param_Out_ActorsToIgnore,Z_Param_bFindInitialOverlaps); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathSweep) \
@@ -210,7 +239,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_CollisionShapeInflation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathSweep(Z_Param_CollisionComponent,Z_Param_Start,Z_Param_End,Z_Param_Out_OutHit,Z_Param_bFindInitialOverlaps,Z_Param_CollisionShapeInflation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execFindPathSolution_StressTesting) \
@@ -222,7 +253,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT_REF(FDoNNavigationQueryParams,Z_Param_Out_QueryParams); \
 		P_GET_STRUCT_REF(FDoNNavigationDebugParams,Z_Param_Out_DebugParams); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->FindPathSolution_StressTesting(Z_Param_Actor,Z_Param_Destination,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_Out_QueryParams,Z_Param_Out_DebugParams); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execStopListeningToDynamicCollisionsForPath) \
@@ -230,7 +263,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_ListenerToClear); \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_QueryData); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->StopListeningToDynamicCollisionsForPath(FDonNavigationDynamicCollisionDelegate(Z_Param_ListenerToClear),Z_Param_Out_QueryData); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execScheduleDynamicCollisionUpdate) \
@@ -246,21 +281,27 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bForceSynchronousExecution); \
 		P_GET_UBOOL(Z_Param_bDrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->ScheduleDynamicCollisionUpdate(Z_Param_Mesh,FDonCollisionSamplerCallback(Z_Param_ResultHandler),Z_Param_CustomCacheIdentifier,Z_Param_bReplaceExistingTask,Z_Param_bDisableCacheUsage,Z_Param_bReloadCollisionCache,Z_Param_bUseCheapBoundsCollision,Z_Param_BoundsScaleFactor,Z_Param_bForceSynchronousExecution,Z_Param_bDrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execHasTask) \
 	{ \
 		P_GET_OBJECT(AActor,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->HasTask(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execAbortPathfindingTask) \
 	{ \
 		P_GET_OBJECT(AActor,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->AbortPathfindingTask(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execSchedulePathfindingTask) \
@@ -272,27 +313,35 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_ResultHandlerDelegate); \
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_DynamicCollisionListener); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->SchedulePathfindingTask(Z_Param_Actor,Z_Param_Destination,Z_Param_Out_QueryParams,Z_Param_Out_DebugParams,FDoNNavigationResultHandler(Z_Param_ResultHandlerDelegate),FDonNavigationDynamicCollisionDelegate(Z_Param_DynamicCollisionListener)); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsLocationWithinNavigableWorld) \
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_DesiredLocation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsLocationWithinNavigableWorld(Z_Param_DesiredLocation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execClampLocationToNavigableWorld) \
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_DesiredLocation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->ClampLocationToNavigableWorld(Z_Param_DesiredLocation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_ClearAllVolumes) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_ClearAllVolumes(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawVoxelCollisionProfile) \
@@ -301,7 +350,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bDrawPersistent); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_Duration); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawVoxelCollisionProfile(Z_Param_MeshOrPrimitive,Z_Param_bDrawPersistent,Z_Param_Duration); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawVolumesAroundPoint) \
@@ -313,37 +364,47 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_GET_UBOOL(Z_Param_bAutoInitializeVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawVolumesAroundPoint(Z_Param_Location,Z_Param_CubeSize,Z_Param_DrawPersistentLines,Z_Param_Duration,Z_Param_LineThickness,Z_Param_bAutoInitializeVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawAllVolumes) \
 	{ \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawAllVolumes(Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_ToggleWorldBoundaryInGame) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_ToggleWorldBoundaryInGame(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execConstructBuilder) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->ConstructBuilder(); \
+		P_NATIVE_END; \
 	}
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_RPC_WRAPPERS_NO_PURE_DECLS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execVisualizeDynamicCollisionListeners) \
 	{ \
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_Listener); \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_QueryData); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeDynamicCollisionListeners(FDonNavigationDynamicCollisionDelegate(Z_Param_Listener),Z_Param_Out_QueryData); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execVisualizeNAVResult) \
@@ -355,7 +416,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT_REF(FDoNNavigationDebugParams,Z_Param_Out_DebugParams); \
 		P_GET_STRUCT_REF(FColor,Z_Param_Out_LineColor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->VisualizeNAVResult(Z_Param_Out_PathSolution,Z_Param_Source,Z_Param_Destination,Z_Param_Reset,Z_Param_Out_DebugParams,Z_Param_Out_LineColor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsMeshBoundsWithinNavigableWorld) \
@@ -363,7 +426,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_OBJECT(UPrimitiveComponent,Z_Param_Mesh); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_BoundsScaleFactor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsMeshBoundsWithinNavigableWorld(Z_Param_Mesh,Z_Param_BoundsScaleFactor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsLocationBeneathLandscape) \
@@ -371,7 +436,24 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT(FVector,Z_Param_Location); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineTraceHeight); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsLocationBeneathLandscape(Z_Param_Location,Z_Param_LineTraceHeight); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execFindRandomPointAroundOriginInNavWorld) \
+	{ \
+		P_GET_OBJECT(AActor,Z_Param_NavigationActor); \
+		P_GET_STRUCT(FVector,Z_Param_Origin); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_Distance); \
+		P_GET_UBOOL_REF(Z_Param_Out_bFoundValidResult); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxDesiredAltitude); \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxZAngularDispacement); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_MaxAttempts); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(FVector*)Z_Param__Result=this->FindRandomPointAroundOriginInNavWorld(Z_Param_NavigationActor,Z_Param_Origin,Z_Param_Distance,Z_Param_Out_bFoundValidResult,Z_Param_MaxDesiredAltitude,Z_Param_MaxZAngularDispacement,Z_Param_MaxAttempts); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execFindRandomPointFromActorInNavWorld) \
@@ -383,7 +465,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UFloatProperty,Z_Param_MaxZAngularDispacement); \
 		P_GET_PROPERTY(UIntProperty,Z_Param_MaxAttempts); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->FindRandomPointFromActorInNavWorld(Z_Param_Actor,Z_Param_Distance,Z_Param_Out_bFoundValidResult,Z_Param_MaxDesiredAltitude,Z_Param_MaxZAngularDispacement,Z_Param_MaxAttempts); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathLineSweep) \
@@ -395,7 +479,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_CollisionShapeInflation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathLineSweep(Z_Param_CollisionComponent,Z_Param_Start,Z_Param_End,Z_Param_Out_OutHit,Z_Param_bFindInitialOverlaps,Z_Param_CollisionShapeInflation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathLineTrace) \
@@ -406,7 +492,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_TARRAY_REF(AActor*,Z_Param_Out_ActorsToIgnore); \
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathLineTrace(Z_Param_start,Z_Param_end,Z_Param_Out_OutHit,Z_Param_Out_ActorsToIgnore,Z_Param_bFindInitialOverlaps); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsDirectPathSweep) \
@@ -418,7 +506,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bFindInitialOverlaps); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_CollisionShapeInflation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsDirectPathSweep(Z_Param_CollisionComponent,Z_Param_Start,Z_Param_End,Z_Param_Out_OutHit,Z_Param_bFindInitialOverlaps,Z_Param_CollisionShapeInflation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execFindPathSolution_StressTesting) \
@@ -430,7 +520,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_STRUCT_REF(FDoNNavigationQueryParams,Z_Param_Out_QueryParams); \
 		P_GET_STRUCT_REF(FDoNNavigationDebugParams,Z_Param_Out_DebugParams); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->FindPathSolution_StressTesting(Z_Param_Actor,Z_Param_Destination,Z_Param_Out_PathSolutionRaw,Z_Param_Out_PathSolutionOptimized,Z_Param_Out_QueryParams,Z_Param_Out_DebugParams); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execStopListeningToDynamicCollisionsForPath) \
@@ -438,7 +530,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_ListenerToClear); \
 		P_GET_STRUCT_REF(FDoNNavigationQueryData,Z_Param_Out_QueryData); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->StopListeningToDynamicCollisionsForPath(FDonNavigationDynamicCollisionDelegate(Z_Param_ListenerToClear),Z_Param_Out_QueryData); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execScheduleDynamicCollisionUpdate) \
@@ -454,21 +548,27 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bForceSynchronousExecution); \
 		P_GET_UBOOL(Z_Param_bDrawDebug); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->ScheduleDynamicCollisionUpdate(Z_Param_Mesh,FDonCollisionSamplerCallback(Z_Param_ResultHandler),Z_Param_CustomCacheIdentifier,Z_Param_bReplaceExistingTask,Z_Param_bDisableCacheUsage,Z_Param_bReloadCollisionCache,Z_Param_bUseCheapBoundsCollision,Z_Param_BoundsScaleFactor,Z_Param_bForceSynchronousExecution,Z_Param_bDrawDebug); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execHasTask) \
 	{ \
 		P_GET_OBJECT(AActor,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->HasTask(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execAbortPathfindingTask) \
 	{ \
 		P_GET_OBJECT(AActor,Z_Param_Actor); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->AbortPathfindingTask(Z_Param_Actor); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execSchedulePathfindingTask) \
@@ -480,27 +580,35 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_ResultHandlerDelegate); \
 		P_GET_PROPERTY(UDelegateProperty,Z_Param_DynamicCollisionListener); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->SchedulePathfindingTask(Z_Param_Actor,Z_Param_Destination,Z_Param_Out_QueryParams,Z_Param_Out_DebugParams,FDoNNavigationResultHandler(Z_Param_ResultHandlerDelegate),FDonNavigationDynamicCollisionDelegate(Z_Param_DynamicCollisionListener)); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execIsLocationWithinNavigableWorld) \
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_DesiredLocation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(bool*)Z_Param__Result=this->IsLocationWithinNavigableWorld(Z_Param_DesiredLocation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execClampLocationToNavigableWorld) \
 	{ \
 		P_GET_STRUCT(FVector,Z_Param_DesiredLocation); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(FVector*)Z_Param__Result=this->ClampLocationToNavigableWorld(Z_Param_DesiredLocation); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_ClearAllVolumes) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_ClearAllVolumes(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawVoxelCollisionProfile) \
@@ -509,7 +617,9 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_UBOOL(Z_Param_bDrawPersistent); \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_Duration); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawVoxelCollisionProfile(Z_Param_MeshOrPrimitive,Z_Param_bDrawPersistent,Z_Param_Duration); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawVolumesAroundPoint) \
@@ -521,30 +631,38 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_GET_UBOOL(Z_Param_bAutoInitializeVolumes); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawVolumesAroundPoint(Z_Param_Location,Z_Param_CubeSize,Z_Param_DrawPersistentLines,Z_Param_Duration,Z_Param_LineThickness,Z_Param_bAutoInitializeVolumes); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_DrawAllVolumes) \
 	{ \
 		P_GET_PROPERTY(UFloatProperty,Z_Param_LineThickness); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_DrawAllVolumes(Z_Param_LineThickness); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execDebug_ToggleWorldBoundaryInGame) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->Debug_ToggleWorldBoundaryInGame(); \
+		P_NATIVE_END; \
 	} \
  \
 	DECLARE_FUNCTION(execConstructBuilder) \
 	{ \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		this->ConstructBuilder(); \
+		P_NATIVE_END; \
 	}
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_INCLASS_NO_PURE_DECLS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesADonNavigationManager(); \
 	friend DONAINAVIGATION_API class UClass* Z_Construct_UClass_ADonNavigationManager(); \
@@ -555,7 +673,7 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_INCLASS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_INCLASS \
 	private: \
 	static void StaticRegisterNativesADonNavigationManager(); \
 	friend DONAINAVIGATION_API class UClass* Z_Construct_UClass_ADonNavigationManager(); \
@@ -566,45 +684,47 @@ static inline void FDonNavigationDynamicCollisionDelegate_DelegateWrapper(const 
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_STANDARD_CONSTRUCTORS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ADonNavigationManager(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ADonNavigationManager) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ADonNavigationManager); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ADonNavigationManager); \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API ADonNavigationManager(const ADonNavigationManager& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API ADonNavigationManager(ADonNavigationManager&&); \
+	NO_API ADonNavigationManager(const ADonNavigationManager&); \
 public:
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_ENHANCED_CONSTRUCTORS \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_ENHANCED_CONSTRUCTORS \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API ADonNavigationManager(const ADonNavigationManager& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API ADonNavigationManager(ADonNavigationManager&&); \
+	NO_API ADonNavigationManager(const ADonNavigationManager&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ADonNavigationManager); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ADonNavigationManager); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ADonNavigationManager)
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_573_PROLOG
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_GENERATED_BODY_LEGACY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_614_PROLOG
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_RPC_WRAPPERS \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_INCLASS \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_STANDARD_CONSTRUCTORS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_RPC_WRAPPERS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_INCLASS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_GENERATED_BODY \
+#define SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_RPC_WRAPPERS_NO_PURE_DECLS \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_INCLASS_NO_PURE_DECLS \
-	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_576_ENHANCED_CONSTRUCTORS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_RPC_WRAPPERS_NO_PURE_DECLS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_INCLASS_NO_PURE_DECLS \
+	SEBA_Plugins_AI_DonAINavigation_Source_DonAINavigation_Classes_DonNavigationManager_h_617_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

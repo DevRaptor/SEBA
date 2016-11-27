@@ -8,7 +8,12 @@
 #include "Private/DonAINavigationPrivatePCH.h"
 #include "DonAINavigation.generated.dep.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-void EmptyLinkFunctionForGeneratedCodeDonAINavigation() {}
+void EmptyLinkFunctionForGeneratedCode1DonAINavigation() {}
+FName DONAINAVIGATION_AddMovementInputCustom = FName(TEXT("AddMovementInputCustom"));
+FName DONAINAVIGATION_OnLocomotionAbort = FName(TEXT("OnLocomotionAbort"));
+FName DONAINAVIGATION_OnLocomotionBegin = FName(TEXT("OnLocomotionBegin"));
+FName DONAINAVIGATION_OnLocomotionEnd = FName(TEXT("OnLocomotionEnd"));
+FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 static class UEnum* EDonNavigationQueryStatus_StaticEnum()
 {
 	extern DONAINAVIGATION_API class UPackage* Z_Construct_UPackage__Script_DonAINavigation();
@@ -292,6 +297,7 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFDonNavigationV
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "Debug_DrawVoxelCollisionProfile",(Native)&ADonNavigationManager::execDebug_DrawVoxelCollisionProfile);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "Debug_ToggleWorldBoundaryInGame",(Native)&ADonNavigationManager::execDebug_ToggleWorldBoundaryInGame);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "FindPathSolution_StressTesting",(Native)&ADonNavigationManager::execFindPathSolution_StressTesting);
+		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "FindRandomPointAroundOriginInNavWorld",(Native)&ADonNavigationManager::execFindRandomPointAroundOriginInNavWorld);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "FindRandomPointFromActorInNavWorld",(Native)&ADonNavigationManager::execFindRandomPointFromActorInNavWorld);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "HasTask",(Native)&ADonNavigationManager::execHasTask);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "IsDirectPathLineSweep",(Native)&ADonNavigationManager::execIsDirectPathLineSweep);
@@ -306,12 +312,12 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFDonNavigationV
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "VisualizeDynamicCollisionListeners",(Native)&ADonNavigationManager::execVisualizeDynamicCollisionListeners);
 		FNativeFunctionRegistrar::RegisterFunction(ADonNavigationManager::StaticClass(), "VisualizeNAVResult",(Native)&ADonNavigationManager::execVisualizeNAVResult);
 	}
-	IMPLEMENT_CLASS(ADonNavigationManager, 3110582354);
+	IMPLEMENT_CLASS(ADonNavigationManager, 3737276242);
 	void UDonNavigationHelper::StaticRegisterNativesUDonNavigationHelper()
 	{
 		FNativeFunctionRegistrar::RegisterFunction(UDonNavigationHelper::StaticClass(), "DonNavigationManager",(Native)&UDonNavigationHelper::execDonNavigationManager);
 	}
-	IMPLEMENT_CLASS(UDonNavigationHelper, 4052576721);
+	IMPLEMENT_CLASS(UDonNavigationHelper, 3562386158);
 class UScriptStruct* FBT_FlyToTarget_DebugParams::StaticStruct()
 {
 	extern DONAINAVIGATION_API class UPackage* Z_Construct_UPackage__Script_DonAINavigation();
@@ -337,11 +343,15 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFBT_FlyToTarget
 		FNativeFunctionRegistrar::RegisterFunction(UBTTask_FlyTo::StaticClass(), "Pathfinding_OnDynamicCollisionAlert",(Native)&UBTTask_FlyTo::execPathfinding_OnDynamicCollisionAlert);
 		FNativeFunctionRegistrar::RegisterFunction(UBTTask_FlyTo::StaticClass(), "Pathfinding_OnFinish",(Native)&UBTTask_FlyTo::execPathfinding_OnFinish);
 	}
-	IMPLEMENT_CLASS(UBTTask_FlyTo, 2256845482);
+	IMPLEMENT_CLASS(UBTTask_FlyTo, 1787974367);
+	void ADonNavigationManagerUnbound::StaticRegisterNativesADonNavigationManagerUnbound()
+	{
+	}
+	IMPLEMENT_CLASS(ADonNavigationManagerUnbound, 1231797132);
 	void UDoNNavigationVolumeComponent::StaticRegisterNativesUDoNNavigationVolumeComponent()
 	{
 	}
-	IMPLEMENT_CLASS(UDoNNavigationVolumeComponent, 4099889518);
+	IMPLEMENT_CLASS(UDoNNavigationVolumeComponent, 1498162927);
 	void IDonNavigator::AddMovementInputCustom(FVector WorldDirection, float ScaleValue)
 	{
 		check(0 && "Do not directly call Event functions in Interfaces. Call Execute_AddMovementInputCustom instead.");
@@ -506,12 +516,7 @@ static struct FScriptStruct_DonAINavigation_StaticRegisterNativesFNavigationGrap
 		FNativeFunctionRegistrar::RegisterFunction(ADEPRECATED_VolumeAdaptiveBuilder::StaticClass(), "VisualizeNAVResultRealTime",(Native)&ADEPRECATED_VolumeAdaptiveBuilder::execVisualizeNAVResultRealTime);
 		FNativeFunctionRegistrar::RegisterFunction(ADEPRECATED_VolumeAdaptiveBuilder::StaticClass(), "VisualizeSolution",(Native)&ADEPRECATED_VolumeAdaptiveBuilder::execVisualizeSolution);
 	}
-	IMPLEMENT_CLASS(ADEPRECATED_VolumeAdaptiveBuilder, 2848900243);
-FName DONAINAVIGATION_AddMovementInputCustom = FName(TEXT("AddMovementInputCustom"));
-FName DONAINAVIGATION_OnLocomotionAbort = FName(TEXT("OnLocomotionAbort"));
-FName DONAINAVIGATION_OnLocomotionBegin = FName(TEXT("OnLocomotionBegin"));
-FName DONAINAVIGATION_OnLocomotionEnd = FName(TEXT("OnLocomotionEnd"));
-FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
+	IMPLEMENT_CLASS(ADEPRECATED_VolumeAdaptiveBuilder, 2151335679);
 #if USE_COMPILED_IN_NATIVES
 // Cross Module References
 	COREUOBJECT_API class UScriptStruct* Z_Construct_UScriptStruct_FVector();
@@ -558,6 +563,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_Debug_DrawVoxelCollisionProfile();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_Debug_ToggleWorldBoundaryInGame();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_FindPathSolution_StressTesting();
+	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_FindRandomPointAroundOriginInNavWorld();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_FindRandomPointFromActorInNavWorld();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_HasTask();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_ADonNavigationManager_IsDirectPathLineSweep();
@@ -581,6 +587,8 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_UBTTask_FlyTo_Pathfinding_OnFinish();
 	DONAINAVIGATION_API class UClass* Z_Construct_UClass_UBTTask_FlyTo_NoRegister();
 	DONAINAVIGATION_API class UClass* Z_Construct_UClass_UBTTask_FlyTo();
+	DONAINAVIGATION_API class UClass* Z_Construct_UClass_ADonNavigationManagerUnbound_NoRegister();
+	DONAINAVIGATION_API class UClass* Z_Construct_UClass_ADonNavigationManagerUnbound();
 	DONAINAVIGATION_API class UClass* Z_Construct_UClass_UDoNNavigationVolumeComponent_NoRegister();
 	DONAINAVIGATION_API class UClass* Z_Construct_UClass_UDoNNavigationVolumeComponent();
 	DONAINAVIGATION_API class UFunction* Z_Construct_UFunction_UDonNavigator_AddMovementInputCustom();
@@ -653,6 +661,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Non-Dynamic verison of result delegate:\n\nDECLARE_DELEGATE_OneParam( FDoNNavigationResultHandler, const FDoNNavigationQueryData& )\n\nConsider enabling this for C++ users depending on performance implications of the currently used dynamic delegates (Epic documentation states dynamic delegates are slower).\nThis will require maintenance of two sets of delegate types across the board and a separate API entry point for C++/BP users (UFUNCTIONs only accept dynamic delegate parameters).\n@todo: profile this with high volume load once the system is stable to verify if there are any notable performance benefits in using static delegates."));
+			MetaData->SetValue(NewProp_Data, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -674,6 +683,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 #if WITH_METADATA
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+			MetaData->SetValue(NewProp_Data, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1249,6 +1259,48 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("WARNING: This function is for stress-testing for performance only, it operates synchronously unlike the scheduler functions making it great for profiling sessions.\nUse SchedulePathfindingTask for regular navigation and pathfinding usecases.\n\nGiven an actor (representing origin) and a destination point in the world, this function generates the shortest path between the two.\n\n@param  Actor                  Actor which needs to navigate from one point to another. Typically (but not necessarily) a pawn. The location of this actor is treated as origin for pathfinding\n@param  Destination            Point in the world to which the actor needs to travel\n@param  PathSolutionRaw        Path solution as an array of FVectors representing the shortest path from origin to destination\n@param  PathSolutionOptimized  Path solution optimized from the raw path by performing collision sweeps using the actor's collision component\n@param  QueryParams            Additional params for the path finding query\n@param  DebugParams            Use these debug params to enable visualization of the raw and optimized paths and other debug related activities"));
+			MetaData->SetValue(NewProp_DebugParams, TEXT("NativeConst"), TEXT(""));
+			MetaData->SetValue(NewProp_QueryParams, TEXT("NativeConst"), TEXT(""));
+#endif
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_ADonNavigationManager_FindRandomPointAroundOriginInNavWorld()
+	{
+		struct DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms
+		{
+			AActor* NavigationActor;
+			FVector Origin;
+			float Distance;
+			bool bFoundValidResult;
+			float MaxDesiredAltitude;
+			float MaxZAngularDispacement;
+			int32 MaxAttempts;
+			FVector ReturnValue;
+		};
+		UObject* Outer=Z_Construct_UClass_ADonNavigationManager();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("FindRandomPointAroundOriginInNavWorld"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x14C20401, 65535, sizeof(DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms));
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(ReturnValue, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000580, Z_Construct_UScriptStruct_FVector());
+			UProperty* NewProp_MaxAttempts = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("MaxAttempts"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(MaxAttempts, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080);
+			UProperty* NewProp_MaxZAngularDispacement = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("MaxZAngularDispacement"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxZAngularDispacement, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080);
+			UProperty* NewProp_MaxDesiredAltitude = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("MaxDesiredAltitude"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxDesiredAltitude, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080);
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(bFoundValidResult, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms, bool);
+			UProperty* NewProp_bFoundValidResult = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("bFoundValidResult"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(bFoundValidResult, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000180, CPP_BOOL_PROPERTY_BITMASK(bFoundValidResult, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), sizeof(bool), true);
+			UProperty* NewProp_Distance = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Distance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(Distance, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080);
+			UProperty* NewProp_Origin = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Origin"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(Origin, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080, Z_Construct_UScriptStruct_FVector());
+			UProperty* NewProp_NavigationActor = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("NavigationActor"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(NavigationActor, DonNavigationManager_eventFindRandomPointAroundOriginInNavWorld_Parms), 0x0010000000000080, Z_Construct_UClass_AActor_NoRegister());
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
+			MetaData->SetValue(ReturnFunction, TEXT("CPP_Default_MaxAttempts"), TEXT("5"));
+			MetaData->SetValue(ReturnFunction, TEXT("CPP_Default_MaxDesiredAltitude"), TEXT("-1.000000"));
+			MetaData->SetValue(ReturnFunction, TEXT("CPP_Default_MaxZAngularDispacement"), TEXT("15.000000"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 #endif
 		}
 		return ReturnFunction;
@@ -1389,6 +1441,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("CPP_Default_bFindInitialOverlaps"), TEXT("true"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+			MetaData->SetValue(NewProp_ActorsToIgnore, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1607,6 +1660,8 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Schedule Pathfinding Task\n\nSchedules a pathfinding task to generate the shortest available path between a given actor and a desired destination.\nA pathfinding task can run across multiple ticks and when the results are ready the caller is immediately notified through a result handler (FDoNNavigationResultHandler)\nThe caller must bind the result handler in advance to be notified when results are ready.\nIf you're interested in listening to dynamic collisions that may have invalidated the path (for course correction, etc) then you must also bind the dynamic listener FDonNavigationDynamicCollisionDelegate\n\n@param  Actor                    Actor which needs to navigate from one point to another. Typically (but not necessarily) a pawn. The location of this actor is treated as origin for pathfinding\n@param  Destination              Point in the world to which the actor needs to travel\n@param  QueryParams              Additional params for customizing the path finding query\n@param  DebugParams              Use these debug params to enable visualization of the raw and optimized paths and other debug related activities\n@param  ResultHandlerDelegate    You must bind a function of your choice to this delegate to be notified when pathfinding results are available for you to use\n@param DynamicCollisionListener  This listener allows you to be notified whenever your path solution has been invalidated by dynamic obstacles that have occupied parts of your path solution\n                                                                     that may previously have been navigable. Typically this means you should immediately reschedule your query to obtain a revised path solution"));
+			MetaData->SetValue(NewProp_DebugParams, TEXT("NativeConst"), TEXT(""));
+			MetaData->SetValue(NewProp_QueryParams, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1632,6 +1687,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Unregisters a given dynamic collision listener from a given volume. Your should always call this function whenever a particular actor or object is\nno longer interested in listening to collisions in a particular area. This is especially important for maintaining performance as\naccumulating unwanted collision listeners will clog up the system quickly and affect performance."));
+			MetaData->SetValue(NewProp_QueryData, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1656,6 +1712,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+			MetaData->SetValue(NewProp_QueryData, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1691,6 +1748,9 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("Debug helpers:"));
+			MetaData->SetValue(NewProp_LineColor, TEXT("NativeConst"), TEXT(""));
+			MetaData->SetValue(NewProp_DebugParams, TEXT("NativeConst"), TEXT(""));
+			MetaData->SetValue(NewProp_PathSolution, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1721,6 +1781,7 @@ FName DONAINAVIGATION_OnNextSegment = FName(TEXT("OnNextSegment"));
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_Debug_DrawVoxelCollisionProfile());
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_Debug_ToggleWorldBoundaryInGame());
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_FindPathSolution_StressTesting());
+				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_FindRandomPointAroundOriginInNavWorld());
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_FindRandomPointFromActorInNavWorld());
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_HasTask());
 				OuterClass->LinkChild(Z_Construct_UFunction_ADonNavigationManager_IsDirectPathLineSweep());
@@ -1752,6 +1813,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_MaxPathSolverIterationsPerTick = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxPathSolverIterationsPerTick"), RF_Public|RF_Transient|RF_MarkAsNative) UIntProperty(CPP_PROPERTY_BASE(MaxPathSolverIterationsPerTick, ADonNavigationManager), 0x0010000000000005);
 				CPP_BOOL_PROPERTY_BITMASK_STRUCT(PerformCollisionChecksOnStartup, ADonNavigationManager, bool);
 				UProperty* NewProp_PerformCollisionChecksOnStartup = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("PerformCollisionChecksOnStartup"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(PerformCollisionChecksOnStartup, ADonNavigationManager), 0x0010000000000005, CPP_BOOL_PROPERTY_BITMASK(PerformCollisionChecksOnStartup, ADonNavigationManager), sizeof(bool), true);
+				UProperty* NewProp_AutoCorrectionGuessList = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("AutoCorrectionGuessList"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(AutoCorrectionGuessList, ADonNavigationManager), 0x0010000000000005);
+				UProperty* NewProp_AutoCorrectionGuessList_Inner = new(EC_InternalUseOnlyConstructor, NewProp_AutoCorrectionGuessList, TEXT("AutoCorrectionGuessList"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000);
 				UProperty* NewProp_ActorsToIgnoreForCollision = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ActorsToIgnoreForCollision"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(ActorsToIgnoreForCollision, ADonNavigationManager), 0x0010000000000005);
 				UProperty* NewProp_ActorsToIgnoreForCollision_Inner = new(EC_InternalUseOnlyConstructor, NewProp_ActorsToIgnoreForCollision, TEXT("ActorsToIgnoreForCollision"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_AActor_NoRegister());
 				UProperty* NewProp_ObstacleQueryChannels = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ObstacleQueryChannels"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(ObstacleQueryChannels, ADonNavigationManager), 0x0010000000000005);
@@ -1763,6 +1826,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_NAVVolumeData = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("NAVVolumeData"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(NAVVolumeData, ADonNavigationManager), 0x0010000000000014, Z_Construct_UScriptStruct_FDonNavVoxelXYZ());
 				UProperty* NewProp_Billboard = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("Billboard"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(Billboard, ADonNavigationManager), 0x00100000000b001d, Z_Construct_UClass_UBillboardComponent_NoRegister());
 				UProperty* NewProp_SceneComponent = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SceneComponent"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(SceneComponent, ADonNavigationManager), 0x00100000000b001d, Z_Construct_UClass_USceneComponent_NoRegister());
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(bIsUnbound, ADonNavigationManager, bool);
+				UProperty* NewProp_bIsUnbound = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("bIsUnbound"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(bIsUnbound, ADonNavigationManager), 0x0010000000000014, CPP_BOOL_PROPERTY_BITMASK(bIsUnbound, ADonNavigationManager), sizeof(bool), true);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_AbortPathfindingTask(), "AbortPathfindingTask"); // 1685200532
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_ClampLocationToNavigableWorld(), "ClampLocationToNavigableWorld"); // 2511734678
@@ -1772,25 +1837,27 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_Debug_DrawVolumesAroundPoint(), "Debug_DrawVolumesAroundPoint"); // 416336167
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_Debug_DrawVoxelCollisionProfile(), "Debug_DrawVoxelCollisionProfile"); // 253157656
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_Debug_ToggleWorldBoundaryInGame(), "Debug_ToggleWorldBoundaryInGame"); // 2522481735
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_FindPathSolution_StressTesting(), "FindPathSolution_StressTesting"); // 3343643605
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_FindPathSolution_StressTesting(), "FindPathSolution_StressTesting"); // 1704256560
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_FindRandomPointAroundOriginInNavWorld(), "FindRandomPointAroundOriginInNavWorld"); // 3005158938
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_FindRandomPointFromActorInNavWorld(), "FindRandomPointFromActorInNavWorld"); // 1977746427
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_HasTask(), "HasTask"); // 1153687875
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsDirectPathLineSweep(), "IsDirectPathLineSweep"); // 3861934935
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsDirectPathLineTrace(), "IsDirectPathLineTrace"); // 2713126681
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsDirectPathLineTrace(), "IsDirectPathLineTrace"); // 4111262365
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsDirectPathSweep(), "IsDirectPathSweep"); // 825440887
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsLocationBeneathLandscape(), "IsLocationBeneathLandscape"); // 271670069
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsLocationWithinNavigableWorld(), "IsLocationWithinNavigableWorld"); // 2639466561
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_IsMeshBoundsWithinNavigableWorld(), "IsMeshBoundsWithinNavigableWorld"); // 3743239920
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_ScheduleDynamicCollisionUpdate(), "ScheduleDynamicCollisionUpdate"); // 2681820052
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_SchedulePathfindingTask(), "SchedulePathfindingTask"); // 2280221620
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_StopListeningToDynamicCollisionsForPath(), "StopListeningToDynamicCollisionsForPath"); // 1373909238
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_VisualizeDynamicCollisionListeners(), "VisualizeDynamicCollisionListeners"); // 3346019495
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_VisualizeNAVResult(), "VisualizeNAVResult"); // 3756164666
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_SchedulePathfindingTask(), "SchedulePathfindingTask"); // 1856012554
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_StopListeningToDynamicCollisionsForPath(), "StopListeningToDynamicCollisionsForPath"); // 3533188597
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_VisualizeDynamicCollisionListeners(), "VisualizeDynamicCollisionListeners"); // 2345210132
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADonNavigationManager_VisualizeNAVResult(), "VisualizeNAVResult"); // 4059722871
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("DonNavigationManager.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
 				MetaData->SetValue(NewProp_bRunDebugValidationsForDynamicCollisions, TEXT("Category"), TEXT("Debug"));
 				MetaData->SetValue(NewProp_bRunDebugValidationsForDynamicCollisions, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 				MetaData->SetValue(NewProp_DebugVoxelsLineThickness, TEXT("Category"), TEXT("Debug"));
@@ -1817,6 +1884,9 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_PerformCollisionChecksOnStartup, TEXT("Category"), TEXT("Game Startup"));
 				MetaData->SetValue(NewProp_PerformCollisionChecksOnStartup, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 				MetaData->SetValue(NewProp_PerformCollisionChecksOnStartup, TEXT("ToolTip"), TEXT("If set to true, collision checks will be performed for each and every voxel when the game begins. Warning: This can slow down loading of the game significantly.\nDefault behavior is set to false, meaning collision data will always be lazy loaded upn demand. This is the recommended approach"));
+				MetaData->SetValue(NewProp_AutoCorrectionGuessList, TEXT("Category"), TEXT("ObstacleDetection"));
+				MetaData->SetValue(NewProp_AutoCorrectionGuessList, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+				MetaData->SetValue(NewProp_AutoCorrectionGuessList, TEXT("ToolTip"), TEXT("Some pathfinding scenarios need a special auto-correction to be applied to either origin or\n      * destination for pathfinding to work. Eg: If a player is hiding flush with a wall then the pathfinding origin\n      * must be offset slightly adjacent to the wall.\n      * Different games/maps will need different auto-correction values, some maps may need large correction values\n      * while others may need only small adjustments. Tweak this list based on your game's needs."));
 				MetaData->SetValue(NewProp_ActorsToIgnoreForCollision, TEXT("Category"), TEXT("ObstacleDetection"));
 				MetaData->SetValue(NewProp_ActorsToIgnoreForCollision, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 				MetaData->SetValue(NewProp_ObstacleQueryChannels, TEXT("Category"), TEXT("ObstacleDetection"));
@@ -1842,13 +1912,15 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_SceneComponent, TEXT("Category"), TEXT("Translation"));
 				MetaData->SetValue(NewProp_SceneComponent, TEXT("EditInline"), TEXT("true"));
 				MetaData->SetValue(NewProp_SceneComponent, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
+				MetaData->SetValue(NewProp_bIsUnbound, TEXT("Category"), TEXT("DoN Navigation"));
+				MetaData->SetValue(NewProp_bIsUnbound, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManager.h"));
 #endif
 			}
 		}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_ADonNavigationManager(Z_Construct_UClass_ADonNavigationManager, &ADonNavigationManager::StaticClass, TEXT("ADonNavigationManager"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ADonNavigationManager(Z_Construct_UClass_ADonNavigationManager, &ADonNavigationManager::StaticClass, TEXT("ADonNavigationManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ADonNavigationManager);
 	UFunction* Z_Construct_UFunction_UDonNavigationHelper_DonNavigationManager()
 	{
@@ -1907,7 +1979,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_UDonNavigationHelper(Z_Construct_UClass_UDonNavigationHelper, &UDonNavigationHelper::StaticClass, TEXT("UDonNavigationHelper"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UDonNavigationHelper(Z_Construct_UClass_UDonNavigationHelper, &UDonNavigationHelper::StaticClass, TEXT("UDonNavigationHelper"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UDonNavigationHelper);
 	UScriptStruct* Z_Construct_UScriptStruct_FBT_FlyToTarget_DebugParams()
 	{
@@ -1948,6 +2020,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/BehaviorTree/BTTask_FlyTo.h"));
+			MetaData->SetValue(NewProp_Data, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -1970,6 +2043,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("DoN Navigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/BehaviorTree/BTTask_FlyTo.h"));
+			MetaData->SetValue(NewProp_Data, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -2003,14 +2077,15 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_FlightResultKey = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FlightResultKey"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(FlightResultKey, UBTTask_FlyTo), 0x0010000000000005, Z_Construct_UScriptStruct_FBlackboardKeySelector());
 				UProperty* NewProp_FlightLocationKey = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FlightLocationKey"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(CPP_PROPERTY_BASE(FlightLocationKey, UBTTask_FlyTo), 0x0010000000000005, Z_Construct_UScriptStruct_FBlackboardKeySelector());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UBTTask_FlyTo_Pathfinding_OnDynamicCollisionAlert(), "Pathfinding_OnDynamicCollisionAlert"); // 3655515622
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UBTTask_FlyTo_Pathfinding_OnFinish(), "Pathfinding_OnFinish"); // 2591024822
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UBTTask_FlyTo_Pathfinding_OnDynamicCollisionAlert(), "Pathfinding_OnDynamicCollisionAlert"); // 3602950476
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UBTTask_FlyTo_Pathfinding_OnFinish(), "Pathfinding_OnFinish"); // 3765574101
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("BehaviorTree/BTTask_FlyTo.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/BehaviorTree/BTTask_FlyTo.h"));
-				MetaData->SetValue(NewProp_NavigationManager, TEXT("Category"), TEXT("BTTask_FlyTo"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
+				MetaData->SetValue(NewProp_NavigationManager, TEXT("Category"), TEXT("DoN Navigation"));
 				MetaData->SetValue(NewProp_NavigationManager, TEXT("ModuleRelativePath"), TEXT("Classes/BehaviorTree/BTTask_FlyTo.h"));
 				MetaData->SetValue(NewProp_DebugParams, TEXT("Category"), TEXT("DoN Navigation"));
 				MetaData->SetValue(NewProp_DebugParams, TEXT("ModuleRelativePath"), TEXT("Classes/BehaviorTree/BTTask_FlyTo.h"));
@@ -2033,8 +2108,40 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_UBTTask_FlyTo(Z_Construct_UClass_UBTTask_FlyTo, &UBTTask_FlyTo::StaticClass, TEXT("UBTTask_FlyTo"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UBTTask_FlyTo(Z_Construct_UClass_UBTTask_FlyTo, &UBTTask_FlyTo::StaticClass, TEXT("UBTTask_FlyTo"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UBTTask_FlyTo);
+	UClass* Z_Construct_UClass_ADonNavigationManagerUnbound_NoRegister()
+	{
+		return ADonNavigationManagerUnbound::StaticClass();
+	}
+	UClass* Z_Construct_UClass_ADonNavigationManagerUnbound()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_ADonNavigationManager();
+			Z_Construct_UPackage__Script_DonAINavigation();
+			OuterClass = ADonNavigationManagerUnbound::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= 0x20900080;
+
+
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("DonNavigationManagerUnbound.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/DonNavigationManagerUnbound.h"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ADonNavigationManagerUnbound(Z_Construct_UClass_ADonNavigationManagerUnbound, &ADonNavigationManagerUnbound::StaticClass, TEXT("ADonNavigationManagerUnbound"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(ADonNavigationManagerUnbound);
 	UClass* Z_Construct_UClass_UDoNNavigationVolumeComponent_NoRegister()
 	{
 		return UDoNNavigationVolumeComponent::StaticClass();
@@ -2064,23 +2171,24 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Object LOD Lighting TextureStreaming Object LOD Lighting TextureStreaming Activation Components|Activation Trigger ComponentReplication"));
-				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
-				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
 				MetaData->SetValue(NewProp_CanNavigate, TEXT("Category"), TEXT("AerialNavigationVolume"));
-				MetaData->SetValue(NewProp_CanNavigate, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
+				MetaData->SetValue(NewProp_CanNavigate, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
 				MetaData->SetValue(NewProp_Z, TEXT("Category"), TEXT("AerialNavigation"));
-				MetaData->SetValue(NewProp_Z, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
+				MetaData->SetValue(NewProp_Z, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
 				MetaData->SetValue(NewProp_Y, TEXT("Category"), TEXT("AerialNavigation"));
-				MetaData->SetValue(NewProp_Y, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
+				MetaData->SetValue(NewProp_Y, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
 				MetaData->SetValue(NewProp_X, TEXT("Category"), TEXT("AerialNavigation"));
-				MetaData->SetValue(NewProp_X, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DonNavigationVolumeComponent.h"));
+				MetaData->SetValue(NewProp_X, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_DoNNavigationVolumeComponent.h"));
 #endif
 			}
 		}
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_UDoNNavigationVolumeComponent(Z_Construct_UClass_UDoNNavigationVolumeComponent, &UDoNNavigationVolumeComponent::StaticClass, TEXT("UDoNNavigationVolumeComponent"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UDoNNavigationVolumeComponent(Z_Construct_UClass_UDoNNavigationVolumeComponent, &UDoNNavigationVolumeComponent::StaticClass, TEXT("UDoNNavigationVolumeComponent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UDoNNavigationVolumeComponent);
 	UFunction* Z_Construct_UFunction_UDonNavigator_AddMovementInputCustom()
 	{
@@ -2209,7 +2317,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_UDonNavigator(Z_Construct_UClass_UDonNavigator, &UDonNavigator::StaticClass, TEXT("UDonNavigator"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UDonNavigator(Z_Construct_UClass_UDonNavigator, &UDonNavigator::StaticClass, TEXT("UDonNavigator"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UDonNavigator);
 	UScriptStruct* Z_Construct_UScriptStruct_FNAVMapContainer()
 	{
@@ -2738,6 +2846,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("AerialNavigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
 			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("NAV Visualizer"));
+			MetaData->SetValue(NewProp_PathSolution, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -2775,6 +2884,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("AerialNavigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
+			MetaData->SetValue(NewProp_PathSolution, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -2819,6 +2929,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
 			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("AerialNavigation"));
 			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
+			MetaData->SetValue(NewProp_PathSolutionOptimized, TEXT("NativeConst"), TEXT(""));
+			MetaData->SetValue(NewProp_PathSolutionRaw, TEXT("NativeConst"), TEXT(""));
 #endif
 		}
 		return ReturnFunction;
@@ -2913,14 +3025,15 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_NavEntryPointsForTraversal(), "NavEntryPointsForTraversal"); // 363464013
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_NavigaitonEntryPoint(), "NavigaitonEntryPoint"); // 1147018947
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_NavigaitonEntryPointFromVector(), "NavigaitonEntryPointFromVector"); // 1767463075
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeNAVResult(), "VisualizeNAVResult"); // 3576882340
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeNAVResultRealTime(), "VisualizeNAVResultRealTime"); // 587269320
-				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeSolution(), "VisualizeSolution"); // 1071558592
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeNAVResult(), "VisualizeNAVResult"); // 3147177562
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeNAVResultRealTime(), "VisualizeNAVResultRealTime"); // 210984713
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ADEPRECATED_VolumeAdaptiveBuilder_VisualizeSolution(), "VisualizeSolution"); // 3968196593
 				OuterClass->StaticLink();
 #if WITH_METADATA
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
+				MetaData->SetValue(OuterClass, TEXT("ObjectInitializerConstructorDeclared"), TEXT(""));
 				MetaData->SetValue(NewProp_ActorsToIgnoreForCollision, TEXT("Category"), TEXT("ObstacleDetection"));
 				MetaData->SetValue(NewProp_ActorsToIgnoreForCollision, TEXT("ModuleRelativePath"), TEXT("Classes/Legacy/DEPRECATED_VolumeAdaptiveBuilder.h"));
 				MetaData->SetValue(NewProp_NAVOverlapQuery, TEXT("Category"), TEXT("ObstacleDetection"));
@@ -2987,7 +3100,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	static FCompiledInDefer Z_CompiledInDefer_UClass_ADEPRECATED_VolumeAdaptiveBuilder(Z_Construct_UClass_ADEPRECATED_VolumeAdaptiveBuilder, &ADEPRECATED_VolumeAdaptiveBuilder::StaticClass, TEXT("ADEPRECATED_VolumeAdaptiveBuilder"), false, nullptr, nullptr);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_ADEPRECATED_VolumeAdaptiveBuilder(Z_Construct_UClass_ADEPRECATED_VolumeAdaptiveBuilder, &ADEPRECATED_VolumeAdaptiveBuilder::StaticClass, TEXT("ADEPRECATED_VolumeAdaptiveBuilder"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ADEPRECATED_VolumeAdaptiveBuilder);
 	UPackage* Z_Construct_UPackage__Script_DonAINavigation()
 	{
@@ -2997,8 +3110,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/DonAINavigation")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xECF15A59;
-			Guid.B = 0x490A561A;
+			Guid.A = 0x0E80B320;
+			Guid.B = 0x4E98E4E0;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);

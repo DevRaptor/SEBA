@@ -21,7 +21,9 @@ class ADonNavigationManager;
 	{ \
 		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(ADonNavigationManager**)Z_Param__Result=UDonNavigationHelper::DonNavigationManager(Z_Param_WorldContextObject); \
+		P_NATIVE_END; \
 	}
 
 
@@ -31,7 +33,9 @@ class ADonNavigationManager;
 	{ \
 		P_GET_OBJECT(UObject,Z_Param_WorldContextObject); \
 		P_FINISH; \
+		P_NATIVE_BEGIN; \
 		*(ADonNavigationManager**)Z_Param__Result=UDonNavigationHelper::DonNavigationManager(Z_Param_WorldContextObject); \
+		P_NATIVE_END; \
 	}
 
 
@@ -64,8 +68,9 @@ class ADonNavigationManager;
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDonNavigationHelper); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDonNavigationHelper); \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UDonNavigationHelper(const UDonNavigationHelper& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UDonNavigationHelper(UDonNavigationHelper&&); \
+	NO_API UDonNavigationHelper(const UDonNavigationHelper&); \
 public:
 
 
@@ -73,8 +78,9 @@ public:
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UDonNavigationHelper(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
-	/** Private copy-constructor, should never be used */ \
-	NO_API UDonNavigationHelper(const UDonNavigationHelper& InCopy); \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UDonNavigationHelper(UDonNavigationHelper&&); \
+	NO_API UDonNavigationHelper(const UDonNavigationHelper&); \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UDonNavigationHelper); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UDonNavigationHelper); \
